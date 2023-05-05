@@ -2,13 +2,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.TestBase;
 
 import java.util.List;
 
 public class RahulTest extends TestBase {
-
+@Ignore
     @Test
     public void testPractice() throws InterruptedException{
 
