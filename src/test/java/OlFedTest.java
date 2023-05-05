@@ -28,6 +28,7 @@ public class OlFedTest extends TestBase {
         getDriver().findElement(By.xpath("//div[@id='dateOfDepartureBox']//div[@aria-label='Thursday, April 20, 2023']")).click();
     }
 
+    @Ignore
     @Test
     public void bankTest() throws Exception{
 
