@@ -14,14 +14,17 @@ public class Jenkins extends TestUtils {
 
         //login + homepage
         getDriver().findElement(By.xpath("//input[contains(@placeholder,'Username')]")).sendKeys("admin");
-        getDriver().findElement(By.xpath("//input[contains(@placeholder,'Password')]")).sendKeys("f39d4d1a368543b087377aa31c9ead2e");
+        getDriver().findElement(By.xpath("//input[contains(@placeholder,'Password')]")).sendKeys("admin");
         getDriver().findElement(By.xpath("//button[contains(@class,'jenkins-button jenkins-button--primary')]")).click();
 
         //Assert homepage текста
-        Assert.assertEquals(getDriver().findElement(By.xpath("//h1[text()='Welcome to Jenkins!']")).getText(), "Welcome to Jenkins!");
+        Assert.assertEquals(getDriver().findElement(By.xpath("//h1[text()='Welcome to Jenkins!']")).getText(),
+                "Welcome to Jenkins!");
 
         //admin/config
-        WebElement buttonAdmin = getDriver().findElement(By.xpath("//a[@href='/user/admin']//button[@class='jenkins-menu-dropdown-chevron']"));
+        WebElement buttonAdmin = getDriver().
+                findElement(By.xpath("//a[@href='/user/admin']//button[@class='jenkins-menu-dropdown-chevron']"));
+
         //Метод интерфейса JavascriptExecutor для метода .click(); Желательно использовать в самом крайнем случае (метод медленный и тд)
         //jsClick(getDriver(), getDriver().findElement(By.xpath("//a[@href='/user/admin']//button[@class='jenkins-menu-dropdown-chevron']")));
         buttonAdmin.sendKeys(Keys.RETURN); //Тут я использовал метод .sendKeys(Keys.RETURN) вместо .click(), тк второй не работал.
@@ -32,7 +35,7 @@ public class Jenkins extends TestUtils {
 
         //Assert текста в поле для заполнения используя .getAttribute("value");
         String userName = getDriver().findElement(By.xpath("//input[@name='_.fullName']")).getAttribute("value");
-        Assert.assertEquals(userName, "admin");
+        Assert.assertEquals(userName, "Oleg");
 
         //Assert выпадающего окна timeZones тега select
         WebElement timeZone = getDriver().findElement(By.xpath("//select[@checkdependson='timeZoneName']"));
